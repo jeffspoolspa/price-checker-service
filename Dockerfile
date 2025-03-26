@@ -52,4 +52,5 @@ ENV PORT 8080
 EXPOSE 8080
 
 # Run your Python app (modify if your main file is different)
-CMD ["python", "app.py"]
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
+
