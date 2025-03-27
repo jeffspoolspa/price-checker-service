@@ -26,7 +26,11 @@ def get_price(part_number):
     print("Chrome version:", subprocess.getoutput("google-chrome --version"))
     print("Chromedriver version:", subprocess.getoutput("chromedriver --version"))
 
-    driver = webdriver.Chrome(options=options)
+    from selenium.webdriver.chrome.service import Service
+    from selenium.webdriver.chrome.webdriver import WebDriver
+
+    driver = webdriver.Remote(command_executor='http://localhost:4444/wd/hub',options=options)
+
 
     try:
         wait = WebDriverWait(driver, 60)
