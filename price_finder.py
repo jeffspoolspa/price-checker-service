@@ -17,6 +17,15 @@ def get_price(part_number):
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
 
+    import subprocess
+
+    # Debug: Check if chromedriver is installed and accessible
+    print("⏳ Checking if chromedriver exists...")
+    print("PATH:", os.environ.get("PATH"))
+    print("which chromedriver:", subprocess.getoutput("which chromedriver"))
+    print("Chrome version:", subprocess.getoutput("google-chrome --version"))
+    print("Chromedriver version:", subprocess.getoutput("chromedriver --version"))
+
     driver = webdriver.Chrome(options=options)
 
     try:
