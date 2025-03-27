@@ -8,11 +8,15 @@ RUN apt-get update && apt-get install -y python3 python3-pip
 # Set working directory
 WORKDIR /app
 
-# Copy the test script into the container
+# Copy your test script and entrypoint script into the container
 COPY test_selenium.py .
+COPY run_test.sh .
 
-# Run the test script when the container starts
-CMD ["python3", "test_selenium.py"]
+# Ensure the entrypoint script is executable
+RUN chmod +x run_test.sh
+
+# Use the entrypoint script as the CMD
+CMD ["./run_test.sh"]
 
 
 
